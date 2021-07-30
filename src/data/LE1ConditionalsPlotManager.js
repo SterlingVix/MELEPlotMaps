@@ -1,6 +1,6 @@
 import BioWorld from './LE1BioWorld';
 
-export const gv = BioWorld.GetGlobalVariables();
+const gv = BioWorld.GetGlobalVariables();
 
 export const F1002 = () => (gv.GetBool(5024) === true);
 export const F1003 = () => (gv.GetBool(4982) === true || gv.GetBool(4983) === true);
