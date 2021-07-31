@@ -1,9 +1,15 @@
+:root {
+  --viewHeight: 92vh;
+  --viewWidth: 100vw;
+  --headerHeight: calc(100vh - var(--viewHeight));
+}
+
 .App {
   text-align: center;
 }
 
 .App-logo {
-  height: 4vmin;
+  height: calc(var(--headerHeight) / 3);
   pointer-events: none;
 }
 
@@ -15,17 +21,22 @@
 
 .App-header {
   background-color: #282c34;
-  min-height: 10vh;
+  height: var(--headerHeight);
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  font-size: calc(10px + 2vmin);
+  font-size: calc(var(--headerHeight) / 8);
   color: white;
 }
 
 .App-link {
   color: #61dafb;
+}
+
+.mainView {
+  height: var(--viewHeight);
+  width: var(--viewWidth)
 }
 
 .GraphsContainer {

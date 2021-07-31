@@ -16,7 +16,6 @@ const groups = {
   trans: 5,
 };
 
-
 const nodesBoolsMap = _.map(PlotBools, ({ plotEl, descr }, boolsId) => {
   return {
     descr,
@@ -24,10 +23,20 @@ const nodesBoolsMap = _.map(PlotBools, ({ plotEl, descr }, boolsId) => {
     group: groups.bools,
   };
 });
-const nodesCondsMap = _.map(Conds, (funcCode, funcId) => {
+
+/**
+ * {
+ *   bools: [],
+ *   func,
+ *   id: cndId,
+ *   ints: [],
+ *   namedBools: [],
+ *   namedInts: [],
+ * }
+ */
+const nodesCondsMap = _.map(Conds, (node, funcId) => {
   return {
-    descr: funcCode,
-    id: funcId,
+    ...node,
     group: groups.conds,
   };
 });

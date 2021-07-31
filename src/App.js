@@ -95,121 +95,123 @@ function App() {
         </a>
       </header>
 
-      <div className="GraphsContainer">
-        <div className="GraphContainer">
-          <ForceDirectedGraph
-            data={{
-              links: [
-                [0, 0],
-                [0, 1],
+      <div className="mainView">
+        {/*<div className="GraphsContainer">*/}
+        {/*  <div className="GraphContainer">*/}
+        {/*    <ForceDirectedGraph*/}
+        {/*      data={{*/}
+        {/*        links: [*/}
+        {/*          [0, 0],*/}
+        {/*          [0, 1],*/}
 
-                [1, 0],
-                [1, 1],
-              ],
-              nodes: [
-                [0, 0],
-                [0, 1],
+        {/*          [1, 0],*/}
+        {/*          [1, 1],*/}
+        {/*        ],*/}
+        {/*        nodes: [*/}
+        {/*          [0, 0],*/}
+        {/*          [0, 1],*/}
 
-                [1, 0],
-                [1, 1],
-              ],
-            }}
-            height={240}
-            width={240}
-          />
-        </div>
+        {/*          [1, 0],*/}
+        {/*          [1, 1],*/}
+        {/*        ],*/}
+        {/*      }}*/}
+        {/*      height={240}*/}
+        {/*      width={240}*/}
+        {/*    />*/}
+        {/*  </div>*/}
 
-        <div className="GraphContainer">
-          <ForceDirectedGraph
-            data={{
-              links: [
-                [0, 0],
-                [0, 1],
-                [0, 2],
+        {/*  <div className="GraphContainer">*/}
+        {/*    <ForceDirectedGraph*/}
+        {/*      data={{*/}
+        {/*        links: [*/}
+        {/*          [0, 0],*/}
+        {/*          [0, 1],*/}
+        {/*          [0, 2],*/}
 
-                [1, 0],
-                [1, 1],
-                [1, 2],
-              ],
-              nodes: [
-                [0, 0],
-                [0, 1],
-                [0, 2],
+        {/*          [1, 0],*/}
+        {/*          [1, 1],*/}
+        {/*          [1, 2],*/}
+        {/*        ],*/}
+        {/*        nodes: [*/}
+        {/*          [0, 0],*/}
+        {/*          [0, 1],*/}
+        {/*          [0, 2],*/}
 
-                [1, 0],
-                [1, 1],
-                [1, 2],
-              ],
-            }}
-            height={240}
-            width={240}
-          />
-        </div>
+        {/*          [1, 0],*/}
+        {/*          [1, 1],*/}
+        {/*          [1, 2],*/}
+        {/*        ],*/}
+        {/*      }}*/}
+        {/*      height={240}*/}
+        {/*      width={240}*/}
+        {/*    />*/}
+        {/*  </div>*/}
 
-        <div className="GraphContainer">
-          <ForceDirectedGraph
-            data={{
-              links: [
-                [0, 0],
-                [0, 1],
-                [0, 2],
+        {/*  <div className="GraphContainer">*/}
+        {/*    <ForceDirectedGraph*/}
+        {/*      data={{*/}
+        {/*        links: [*/}
+        {/*          [0, 0],*/}
+        {/*          [0, 1],*/}
+        {/*          [0, 2],*/}
 
-                [1, 0],
-                [1, 1],
-                [1, 2],
+        {/*          [1, 0],*/}
+        {/*          [1, 1],*/}
+        {/*          [1, 2],*/}
 
-                [2, 0],
-                [2, 1],
-                [2, 2],
-              ],
-              nodes: [
-                [0, 1],
-                [0, 2],
+        {/*          [2, 0],*/}
+        {/*          [2, 1],*/}
+        {/*          [2, 2],*/}
+        {/*        ],*/}
+        {/*        nodes: [*/}
+        {/*          [0, 1],*/}
+        {/*          [0, 2],*/}
 
-                [1, 0],
-                [1, 2],
+        {/*          [1, 0],*/}
+        {/*          [1, 2],*/}
 
-                [2, 0],
-                [2, 1],
-              ],
-            }}
-            height={240}
-            width={240}
-          />
-        </div>
-      </div>
+        {/*          [2, 0],*/}
+        {/*          [2, 1],*/}
+        {/*        ],*/}
+        {/*      }}*/}
+        {/*      height={240}*/}
+        {/*      width={240}*/}
+        {/*    />*/}
+        {/*  </div>*/}
+        {/*</div>*/}
 
-      <div className="GraphsContainer">
-        <div className="GraphContainer">
-          <LE1ConditionalsBoolsGraph
-            data={{
-              links: [
-                [0, 0],
-                [0, 1],
-                [0, 2],
+        <div className="GraphsContainer">
+          <div className="GraphContainer">
+            <LE1ConditionalsBoolsGraph
+              data={{
+                links: [
+                  [0, 0],
+                  [0, 1],
+                  [0, 2],
 
-                [1, 0],
-                [1, 1],
-                [1, 2],
+                  [1, 0],
+                  [1, 1],
+                  [1, 2],
 
-                [2, 0],
-                [2, 1],
-                [2, 2],
-              ],
-              nodes: [
-                [0, 1],
-                [0, 2],
+                  [2, 0],
+                  [2, 1],
+                  [2, 2],
+                ],
+                nodes: [
+                  [0, 1],
+                  [0, 2],
 
-                [1, 0],
-                [1, 2],
+                  [1, 0],
+                  [1, 2],
 
-                [2, 0],
-                [2, 1],
-              ],
-            }}
-            height={240}
-            width={240}
-          />
+                  [2, 0],
+                  [2, 1],
+                ],
+              }}
+              height={240}
+              width={240}
+            />
+          </div>
         </div>
       </div>
     </div>
