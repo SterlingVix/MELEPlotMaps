@@ -1,6 +1,7 @@
 import LineSeriesCanvas from 'react-vis/dist/plot/series/line-series-canvas';
 import MarkSeriesCanvas from 'react-vis/dist/plot/series/mark-series-canvas';
 import PlotBools from '../data/LE1Bools';
+import PlotInts from '../data/LE1Ints';
 import PropTypes from 'prop-types';
 import React from 'react';
 import XYPlot from 'react-vis/dist/plot/xy-plot';
@@ -16,13 +17,26 @@ const groups = {
   trans: 5,
 };
 
-const nodesBoolsMap = _.map(PlotBools, ({ plotEl, descr }, boolsId) => {
-  return {
-    descr,
-    id: boolsId,
-    group: groups.bools,
-  };
-});
+const getNumOrStr = (maybeInt) => {
+  const parsed = _.parseInt(maybeInt);
+
+  return _.isNaN(parsed)
+    ? maybeInt
+    : parsed;
+};
+
+const nodesBoolsMap = _.map(PlotBools, ({ plotEl, descr }, boolsId) => ({
+  descr,
+  id: getNumOrStr(boolsId),
+  group: groups.bools,
+}));
+
+const nodesIntsMap = _.map(PlotInts, ({ plotEl, descr }, intsId) => ({
+  descr,
+  id: getNumOrStr(intsId),
+  group: groups.ints,
+}));
+console.log("-> nodesIntsMap", nodesIntsMap);
 
 /**
  * {
@@ -37,22 +51,44 @@ const nodesBoolsMap = _.map(PlotBools, ({ plotEl, descr }, boolsId) => {
 const nodesCondsMap = _.map(Conds, (node, funcId) => {
   return {
     ...node,
+    id: getNumOrStr(node.id),
     group: groups.conds,
   };
 });
 const nodes = [
-  ...nodesCondsMap,
   ...nodesBoolsMap,
+  ...nodesIntsMap,
+  ...nodesCondsMap,
 ];
-const links = _.map(Conds, (funcCode, funcId) => {
-  return {
-    // source: funcCode, // TODO
-    source: funcId,
-    target: funcId,
-    value: 1,
-  };
-});
 
+const links = _.flatMap(Conds, (node) => {
+  /*
+     bools: []
+     descr: gv => gv.GetInt(13) === 120101
+     id: "F817"
+     ints: [13]
+     namedBools: []
+   */
+  const {
+    bools = [],
+    ints = [],
+    namedBools = [],
+    namedInts = [],
+  } = node;
+
+  const links = _.uniq([
+    ...bools,
+    ...ints,
+    ...namedBools,
+    ...namedInts,
+  ]);
+
+  return _.map(links, (boolOrInt) => ({
+    source: node.id,
+    target: boolOrInt,
+    value: 1,// TODO: is this force weight?
+  }));
+});
 
 
 const colors = [

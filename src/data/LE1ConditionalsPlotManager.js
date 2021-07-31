@@ -1,24 +1,6 @@
 // import BioWorld from './LE1BioWorld';
 // const gv = BioWorld.GetGlobalVariables();
 
-// const getLocalBoolProps = {
-//   InPlayerParty: [],
-// };
-// const getLocalIntProps = {
-//   GetBackground_Childhood: [],
-//   GetBackground_Military: [],
-//   GetBackground_Notoritey: [],
-//   GetCharmSkill: [],
-//   GetClass: [],
-//   GetCredits: [],
-//   GetIntimidateSkill: [],
-//   GetMarshalRank: [],
-//   GetSalvage: [],
-//   GetSpecialty: [],
-//   GetTalkToCount: [],
-//   GetXPLevel: [],
-// };
-
 export const F1002 = (gv) => (gv.GetBool(5024) === true);
 export const F1007 = (gv) => (gv.GetBool(4103) === true);
 export const F1008 = (gv) => (gv.GetBool(4104) === true);

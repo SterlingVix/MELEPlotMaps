@@ -1,4 +1,5 @@
 const LE1Bools = {
+  InPlayerParty: { descr: `InPlayerParty` },
   1762: {plotEl: 2224, descr: `First_Meeting.SFX.TEST_Sandbox.Free_the_Scientists.First_Meeting`},
   1763: {plotEl: 2225, descr: `Scientists_are_freed.SFX.TEST_Sandbox.Free_the_Scientists.Scientists_are_freed`},
   1764: {plotEl: 2226, descr: `Player_knows_about_Jimmy.SFX.TEST_Sandbox.Free_the_Scientists.Player_knows_about_Jimmy`},
