@@ -1,95 +1,10 @@
 import LineSeriesCanvas from 'react-vis/dist/plot/series/line-series-canvas';
 import MarkSeriesCanvas from 'react-vis/dist/plot/series/mark-series-canvas';
-import PlotBools from '../data/LE1Bools';
-import PlotInts from '../data/LE1Ints';
 import PropTypes from 'prop-types';
 import React from 'react';
 import XYPlot from 'react-vis/dist/plot/xy-plot';
-import _ from 'lodash';
 import {forceSimulation, forceLink, forceManyBody, forceCenter} from 'd3-force';
-import Conds from '../data/LE1ConditionalsLinkable';
-
-const groups = {
-  bools: 2,
-  conds: 1,
-  floats: 4,
-  ints: 3,
-  trans: 5,
-};
-
-const getNumOrStr = (maybeInt) => {
-  const parsed = _.parseInt(maybeInt);
-
-  return _.isNaN(parsed)
-    ? maybeInt
-    : parsed;
-};
-
-const nodesBoolsMap = _.map(PlotBools, ({ plotEl, descr }, boolsId) => ({
-  descr,
-  id: getNumOrStr(boolsId),
-  group: groups.bools,
-}));
-
-const nodesIntsMap = _.map(PlotInts, ({ plotEl, descr }, intsId) => ({
-  descr,
-  id: getNumOrStr(intsId),
-  group: groups.ints,
-}));
-console.log("-> nodesIntsMap", nodesIntsMap);
-
-/**
- * {
- *   bools: [],
- *   func,
- *   id: cndId,
- *   ints: [],
- *   namedBools: [],
- *   namedInts: [],
- * }
- */
-const nodesCondsMap = _.map(Conds, (node, funcId) => {
-  return {
-    ...node,
-    id: getNumOrStr(node.id),
-    group: groups.conds,
-  };
-});
-const nodes = [
-  ...nodesBoolsMap,
-  ...nodesIntsMap,
-  ...nodesCondsMap,
-];
-
-const links = _.flatMap(Conds, (node) => {
-  /*
-     bools: []
-     descr: gv => gv.GetInt(13) === 120101
-     id: "F817"
-     ints: [13]
-     namedBools: []
-   */
-  const {
-    bools = [],
-    ints = [],
-    namedBools = [],
-    namedInts = [],
-  } = node;
-
-  const links = _.uniq([
-    ...bools,
-    ...ints,
-    ...namedBools,
-    ...namedInts,
-  ]);
-
-  return _.map(links, (boolOrInt) => ({
-    source: node.id,
-    target: boolOrInt,
-    value: 1,// TODO: is this force weight?
-  }));
-});
-
+import './LE1ConditionalsBoolsGraphs.css';
 
 const colors = [
   '#19CDD7',
@@ -140,7 +55,7 @@ function generateSimulation(props) {
   return {nodes, links};
 }
 
-class ForceDirectedGraph extends React.Component {
+class LE1ConditionalsBoolsGraph extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
@@ -177,7 +92,11 @@ class ForceDirectedGraph extends React.Component {
     const {data} = this.state;
     const {nodes, links} = data;
     return (
-      <XYPlot width={width} height={height} className={className}>
+      <XYPlot
+        width={width}
+        height={height}
+        className={`xyPlot ${className}`}
+      >
         {links.map(({source, target}, index) => {
           return (
             <LineSeriesCanvas
@@ -202,22 +121,6 @@ class ForceDirectedGraph extends React.Component {
   }
 }
 
-ForceDirectedGraph.displayName = 'ForceDirectedGraph';
+LE1ConditionalsBoolsGraph.displayName = 'LE1ConditionalsBoolsGraph';
 
-
-const data = {
-  links,
-  nodes,
-}
-const dims = 480;
-class LE1ConditionalsBoolsGraph extends React.Component {
-  render() {
-    return (
-      <ForceDirectedGraph
-        data={data}
-        height={dims}
-        width={dims}
-      />)
-  }
-}
 export default LE1ConditionalsBoolsGraph;
